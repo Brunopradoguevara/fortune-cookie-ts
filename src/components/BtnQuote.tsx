@@ -3,22 +3,21 @@ import getElementRandomArray from "../utils/getElementRandomArray"
 import './BtnQuote.type'
 import {Prop } from "./BtnQuote.type"
 
-const BtnQuote = ({setQuote,phrases,setNumberBg,numberBg}:Prop) => { 
+const BtnQuote = ({quote,setQuote,phrases,setNumberBg,numberBg}:Prop) => { 
  
     const handleRandomPhrase = () =>{
-        let newNumberBackground = getElementRandomArray([1,2,3,4]) as number
-        setQuote(getElementRandomArray(phrases) as ArrPhrase) 
+        let newNumberBackground: number
+        let newQuote: ArrPhrase
+         do{
+           newQuote = getElementRandomArray(phrases) as ArrPhrase;
+         }while(quote === newQuote);
 
-        if(numberBg !== newNumberBackground){
-          setNumberBg(newNumberBackground)
-        }else if(numberBg === newNumberBackground && newNumberBackground === 4){
-          newNumberBackground -= 2
-          setNumberBg(newNumberBackground)
-        }else{
-          newNumberBackground +=1
-          setNumberBg(newNumberBackground)
-        }
-      
+        do{
+          newNumberBackground = getElementRandomArray([1,2,3,4]) as number
+         }while(numberBg === newNumberBackground);
+
+         setQuote(newQuote);
+         setNumberBg(newNumberBackground);
     }
 
   return (

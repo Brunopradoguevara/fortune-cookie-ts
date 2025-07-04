@@ -24,6 +24,7 @@ function App() {
             phrase = {quote}
           />
           <BtnQuote
+            quote = {quote}
             setQuote = {setQuote}
             phrases = {phrases}
             setNumberBg = {setNumberBg}
